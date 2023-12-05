@@ -1,19 +1,29 @@
 import react, { Component}  from 'react'
-import Detail from './Detail'
 import  {
     View,
     ScrollView,
     Text,
     StyleSheet,
-    Alert
+    Animated,
+    Button
 }  from  'react-native'
 export default class List extends Component {
+   marginTop = new Animated.Value(20)
+   animate = () => {
+    Animated.timing(
+    this.marginTop,
+    {
+      toValue: 200,
+      duration: 500,
+      useNativeDriver: false
+    }
+    ).start()
+   }
    render() {
       return (
           <ScrollView>
-              <Text style={styles.list_item}>☆ 豪华邮轮济州岛3日游</Text>
-              <Text style={styles.list_item}>☆ 豪华邮轮台湾3日游</Text>
-              <Text style={styles.list_item}>☆ 豪华邮轮地中海8日游</Text>
+            <Button title='animate btn' onPress={this.animate}/>
+            <Animated.View style={[styles.box,  {marginTop: this.marginTop}]}/>
           </ScrollView>
       )
 }
@@ -21,8 +31,10 @@ export default class List extends Component {
 }
 
 const styles = StyleSheet.create({
-    list_item: {
-
+    box: {
+       width:150,
+       height: 150,
+       backgroundColor: 'red'
 
     }
 

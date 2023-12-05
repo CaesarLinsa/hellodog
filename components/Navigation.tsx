@@ -7,10 +7,12 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import Detail  from "./Detail";
 import List  from "./List";
+import Calender from "./Calender"
 
 export type BottomTabList = {
     Home: undefined,
-    Detail: undefined
+    Detail: undefined,
+    Calender: undefined
 }
 const Tab = createBottomTabNavigator<BottomTabList>()
 export default class Navigation extends Component {
@@ -21,6 +23,11 @@ export default class Navigation extends Component {
                     <Tab.Screen name={'Home'} component={List} options={{tabBarLabel: '首页',
                         tabBarIcon: ({color, size}) => (
                             <Icon name={'home'} size={size} color={color} />
+                        )
+                    }}></Tab.Screen>
+                    <Tab.Screen name={'Calender'} component={Calender} options={{tabBarLabel: '日历',
+                        tabBarIcon: ({color, size}) => (
+                            <Icon name={'heart'} size={size} color={color} />
                         )
                     }}></Tab.Screen>
                     <Tab.Screen name={'Detail'} component={Detail} options={{tabBarLabel: '详情页',
